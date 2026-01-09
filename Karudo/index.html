@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Role Tree by Karudo — Salesforce‑Native Role Management</title>
+  <meta name="description" content="Karudo builds Salesforce‑native apps. Role Tree is a permission‑aware role hierarchy and user management tool for Salesforce orgs." Role Tree is a permission‑aware role hierarchy and user management tool for Salesforce orgs." />
+  <link rel="icon" type="image/x-icon" href="karudo-favicon.ico" />
+  <link rel="apple-touch-icon" href="karudo-app-512.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Role Tree — Salesforce‑Native Role Management" />
+  <meta property="og:description" content="Visual, permission‑aware role hierarchy management for Salesforce." />
+  <meta property="og:image" content="karudo-og-1200x630.png" />
+  <meta property="og:url" content="https://{{your-domain}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Role Tree",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Salesforce (Lightning)",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "creator": {"@type": "Organization", "name": "{{Your Company}}"},
+    "url": "https://{{your-domain}}"
+  }
+  </script>
+
+  <style>
+    :root { --bg:#ffffff; --card:#ffffff; --text:#111827; --muted:#475569; --brand:#1f6feb; --accent:#f59e0b; }
+    * { box-sizing:border-box; }
+    html, body { height:100%; background:#ffffff !important; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:#ffffff; color:var(--text); }
+    a { color:var(--brand); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .container { width:min(1100px, 92%); margin-inline:auto; }
+    header { position:sticky; top:0; backdrop-filter:saturate(1.2) blur(6px); background:#ffffff; border-bottom:1px solid #e5e7eb; z-index:30; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; }
+    .brand .logo-img { width:32px; height:32px; border-radius:8px; }
+    .nav a.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e5e7eb; background:#ffffff; color:var(--text); cursor:pointer; }
+    .hero { padding:80px 0 40px; text-align:center; }
+    h1 { font-size:clamp(32px,7vw,56px); margin:0 0 10px; line-height:1.05; }
+    .sub { color:var(--muted); font-size:clamp(16px,2.5vw,20px); max-width:820px; margin:0 auto 28px; }
+    .cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:#0b1224; color:var(--text); cursor:pointer; }
+    .btn.primary { background:#ffffff; color:#ffffff; border:none; font-weight:700; }
+    .pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(148,163,184,.28); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px; }
+    .hero-logo { width: clamp(140px, 24vw, 260px); height:auto; display:block; margin:0 auto 18px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+    section { padding:56px 0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+    .card { background:var(--card); border:1px solid #e5e7eb; border-radius:16px; padding:18px; }
+    .card h3 { margin:6px 0 8px; font-size:18px; }
+    .features .card p, .benefits .card p { color:var(--muted); }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; border:1px solid rgba(148,163,184,.3); padding:2px 6px; border-radius:6px; color:#cbd5e1; }
+    .foot { color:var(--muted); font-size:14px; }
+    .cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+    .list { padding-left:18px; }
+    .badge { font-size:12px; color:#0b1224; background:var(--accent); padding:2px 8px; border-radius:999px; font-weight:700; }
+    footer { border-top:1px solid rgba(148,163,184,.18); padding:28px 0; }
+    .notice { font-size:12px; color:var(--muted); margin-top:12px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    /* Simple responsive table */
+    table { width:100%; border-collapse:collapse; border:1px solid rgba(148,163,184,.18); border-radius:12px; overflow:hidden; }
+    th, td { text-align:left; padding:12px; border-bottom:1px solid rgba(148,163,184,.12); }
+    th { background:#f8fafc; }
+    @media (prefers-reduced-motion:no-preference) {
+      .logo { animation:spin 12s linear infinite; }
+      @keyframes spin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+    }
+    body{ background:#ffffff !important; background-image:none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Karudo home">
+        <span>Karudo</span>
+      </div>
+        <span>{{Your Company}}</span>
+      </div>
+      <nav>
+        <a class="btn" href="#features">Features</a>
+        <a class="btn" href="#product">Product</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <img src="karudo-logo-mark.png" alt="Karudo bird logo" class="hero-logo" />
+      <span class="pill">Salesforce‑Native • Lightning Ready • by Karudo</span>
+      <h1>Role Tree — Visual, Permission‑Aware Role Management</h1>
+      <p class="sub">Role Tree helps Salesforce admins view and manage complex <strong>UserRole</strong> hierarchies with drag‑and‑drop and policy‑aware UI. Users without manage permissions see a read‑only tree; those with manage permissions can reorganize safely.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact" aria-label="Contact sales">Contact</a>
+        <a class="btn" href="#product">Learn more</a>
+      </div>
+      <p class="notice">Built by Karudo. Serving enterprise Salesforce orgs.</p>
+    </section>
+
+    <section id="features" class="container features">
+      <h2>Key Features</h2>
+      <div class="grid" role="list">
+        <article class="card" role="listitem">
+          <h3>Drag‑and‑Drop Hierarchy</h3>
+          <p>Move roles and users with guardrails. Cut, paste, and reorder nodes with instant validation.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Permission‑Aware UI</h3>
+          <p>Automatic read‑only or manage modes based on <span class="mono">Manage Roles</span> / <span class="mono">View Roles</span> privileges.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>User Visibility Controls</h3>
+          <p>Actions and buttons are disabled or hidden when the current user lacks access.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Lightning‑Native (LWC)</h3>
+          <p>Built with Lightning Web Components for speed and consistency on desktop and mobile.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Admin Guardrails</h3>
+          <p>Optional tab access restriction when the user lacks both view and manage role permissions.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>AppExchange Ready</h3>
+          <p>Packaged as a Managed Package with a roadmap toward 2GP compatibility.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="product" class="container">
+      <h2>Product Overview</h2>
+      <div class="cols">
+        <div class="card">
+          <h3>What is Role Tree?</h3>
+          <p>Role Tree is a Salesforce‑native app that visualizes the <em>UserRole</em> hierarchy and simplifies moving users and roles in complex org structures. It respects Salesforce permissions throughout.</p>
+          <ul class="list">
+            <li>Read‑only view for non‑admins</li>
+            <li>Full management for authorized administrators</li>
+            <li>Fast search and node selection</li>
+            <li>Minimal clicks to reorganize teams</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Who is it for?</h3>
+          <p>Designed for Salesforce Administrators, Architects, and Security teams in mid‑to‑large orgs.</p>
+          <table aria-label="Value table">
+            <thead>
+              <tr><th>Role</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Admins</td><td>Safer, faster role changes</td></tr>
+              <tr><td>Architects</td><td>Clear visibility and governance</td></tr>
+              <tr><td>Security</td><td>Controls aligned with least privilege</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <h2>About Karudo</h2>
+      <p>Karudo builds Salesforce‑native solutions that simplify administration and improve security posture. We combine deep platform expertise with practical UX to reduce clicks and risk.</p>
+      <p><span class="badge">Headquartered</span> {{City, State, Country}} • <span class="badge">Founded</span> {{Year}}</p>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <div class="cols">
+        <div class="card">
+          <h3>Get in touch</h3>
+          <p>Email: <a href="mailto:{{contact@your-domain}}">{{contact@your-domain}}</a></p>
+          <p>AppExchange & Partner inquiries welcome.</p>
+          <p class="notice">Tip: You can swap this mailto for a form service like Formspree or Netlify Forms later.</p>
+        </div>
+        <div class="card">
+          <h3>Business Info</h3>
+          <ul class="list">
+            <li>Company: {{Your Company Legal Name}}</li>
+            <li>Domain: https://{{your-domain}}</li>
+            <li>Support: <a href="mailto:{{support@your-domain}}">{{support@your-domain}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  
+  <footer>
+    <div class="container foot">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center;">
+        <div>© <span id="y"></span> Karudo • All rights reserved.</div>
+        <div><a href="#policies">Privacy & Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
